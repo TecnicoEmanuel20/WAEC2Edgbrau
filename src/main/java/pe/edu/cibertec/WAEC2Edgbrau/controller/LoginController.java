@@ -57,7 +57,7 @@ public class LoginController {
             model.addAttribute("success", "Usuario Registrado Correctamente");
             model.addAttribute("usuario", new Usuario());
         }catch(Exception ex) {
-            System.out.println("Error : " + ex.getCause().getMessage());
+            System.out.println("Error : " + ex.getMessage());
         }
         return "backoffice/auth/registros";
     }

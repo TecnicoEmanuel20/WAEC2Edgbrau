@@ -6,6 +6,6 @@
 </head>
 <body>
 <nav th:replace="layout::menu"></nav>
-<h1 th:text="${session.nomusuario}"></h1>
+<h1 th:text="'Bienvenido ' + ${session.nomusuario}"></h1>
 </body>
 </html>

@@ -30,19 +30,15 @@
                         Mantenimiento
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/category/init}">
-                            Categoria</a></li>
+                        <li><a class="dropdown-item" th:href="@{/password/cambiar-password}">
+                            Cambiar Password</a></li>
                         <li><a class="dropdown-item" th:href="@{/product/init}">
                             Producto</a></li>
-                        <li><a class="dropdown-item" th:href="@{/seguridad/init}">
-                            Usuarios</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" th:href="@{/logout}">
+                            Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex" role="search" th:action="@{/logout}">
-                <button class="btn btn-success" type="submit">Cerrar Sesión</button>
-            </form>
         </div>
     </div>
 </nav>
