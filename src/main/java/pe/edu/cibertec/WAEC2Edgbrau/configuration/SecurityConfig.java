@@ -30,6 +30,7 @@ public class SecurityConfig {
                                 auth.requestMatchers(
                                                 "/auth/login"
                                                 ,"/auth/registrar"
+                                                ,"password/cambiar-password"
                                                 ,"/resources/**"
                                                 ,"/backoffice/**"
                                                 ,"/static/**"
