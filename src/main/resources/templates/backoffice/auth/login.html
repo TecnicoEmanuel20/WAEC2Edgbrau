@@ -10,26 +10,31 @@
 </head>
 <body>
 <div class="card">
-    <div class="card-header">
-        Featured
+    <div class="card-header" style="text-align:center; padding: 25px 30px; font-size: 27px;">
+        Logueo del Sistema
     </div>
     <div class="card-body">
-        <h1>AUTENTIFICACIÒN</h1>
+        <h1 style="text-align:center; padding: 25px 30px; font-size: 30px;">AUTENTIFICACIÒN</h1>
         <form th:action="@{/auth/login}" method="post">
-            <h2>USUARIO:</h2>
-            <div class="form-floating mb-3 w-100">
-                <input type="text" class="form-control"
-                       name="nomusuario" id="nomusuario" placeholder="name@example.com">
-                <label for="nomusuario">Usuario</label>
+            <div style="display: flex;">
+                <div style="padding-top:15px;padding-left:533px;padding-right: 20px;padding-bottom: 30px" ><h2 style="font-size:20px">USUARIO:</h2></div>
+                <div class="form-floating w-20 pb-13">
+                    <input type="text" class="form-control"
+                           name="nomusuario" id="nomusuario" placeholder="name@example.com">
+                    <label for="nomusuario">Usuario</label>
+                </div>
             </div>
-            <h2>CONTRASEÑA:</h2>
-            <div class="form-floating w-100">
+            <div style="display: flex;">
+                <div style="padding-top: 15px;padding-left:492px;padding-right: 20px" ><h2 style="font-size:20px">CONTRASEÑA:</h2></div>
+            <div class="form-floating w-20">
                 <input type="password" class="form-control"
                        id="password" name="password" placeholder="Password">
                 <label for="password">Password</label>
             </div>
-            <button type="button" class="btn btn-primary">REGISTRARSE</button>
-            <button type="submit" class="btn btn-primary">INGRESAR</button>
+            </div>
+            <div style="padding-left: 553px; padding-top: 30px" ><button type="button" class="btn btn-primary">REGISTRARSE</button>
+                <button type="submit" class="btn btn-primary">INGRESAR</button>
+            </div>
 
         </form>
     </div>
