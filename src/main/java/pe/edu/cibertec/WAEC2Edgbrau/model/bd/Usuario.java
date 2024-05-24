@@ -9,8 +9,8 @@ import java.util.Set;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Integer idusuario;
     private String nomusuario;
     private String email;
@@ -18,11 +18,11 @@ public class Usuario {
     private String nombres;
     private String apellidos;
     private Boolean activo;
-    @ManyToMany(cascade = CascadeType.MERGE,
-            fetch = FetchType.EAGER)
-    @JoinTable(name = "usuario_rol",
-            joinColumns = @JoinColumn(name = "idusuario"),
-            inverseJoinColumns = @JoinColumn(name = "idrol"))
+
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name="idusuario"),
+            foreignKey = @ForeignKey(name="user_role_FK1"), inverseJoinColumns = @JoinColumn(name = "idrol"), inverseForeignKey =
+    @ForeignKey(name="user_role_FK_2"))
     private Set<Rol> roles;
 }
 

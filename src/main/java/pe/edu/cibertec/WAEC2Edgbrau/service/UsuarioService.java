@@ -16,42 +16,27 @@ import java.util.List;
 public class UsuarioService implements IUsuarioService {
     private UsuarioRepository usuarioRepository;
     private RolRepository rolRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder =
-            new BCryptPasswordEncoder();
+
     @Override
     public Usuario obtenerUsuarioxNomUsuario(String nomusuario) {
         return usuarioRepository.findByNomusuario(nomusuario);
     }
+
     @Override
-    public Usuario guardarUsuario(Usuario usuario) {
-        usuario.setPassword(bCryptPasswordEncoder
-                .encode("123456"));
-        usuario.setActivo(true);
-        Rol usuarioRol = rolRepository.findByNomrol("ADMIN");
+    public Usuario guardarUsuario(Usuario usuario, String nombreRol) {
+        Rol usuarioRol = rolRepository.findByNomrol(nombreRol);
+        if(usuarioRol == null) {
+            usuarioRol = new Rol();
+            usuarioRol.setNomrol(nombreRol);
+            rolRepository.save(usuarioRol);
+        }
         usuario.setRoles(new HashSet<>(Arrays.asList(usuarioRol)));
         return usuarioRepository.save(usuario);
     }
-    @Override
-    public List<Usuario> listarUsuarios() {
-        return usuarioRepository.findAll();
-    }
 
     @Override
-    public Usuario obtenerUsuarioxId(Integer id) {
-        Usuario usuario = usuarioRepository.findById(id)
-                .orElse(null);
-        usuario.setPassword("");
-        return usuario;
+    public void actualizarUsuario(String pasword, String nomusuario) {
+        usuarioRepository.updateUser(pasword,nomusuario);
     }
 
-    @Override
-    public void actualizarUsuario(Usuario usuario) {
-        usuarioRepository.updateUser(
-                usuario.getNombres(),
-                usuario.getApellidos(),
-                usuario.getActivo(),
-                usuario.getIdusuario()
-        );
-
-    }
 }

@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import pe.edu.cibertec.WAEC2Edgbrau.service.DetalleUsuarioService;
 
@@ -28,12 +29,13 @@ public class SecurityConfig {
                         auth ->
                                 auth.requestMatchers(
                                                 "/auth/login"
+                                                ,"/auth/registrar"
                                                 ,"/resources/**"
+                                                ,"/backoffice/**"
                                                 ,"/static/**"
                                                 ,"/css/**"
-                                                ,"/js/**").permitAll()
-                                        .anyRequest()
-                                        .authenticated()
+                                               ,"/js/**").permitAll().anyRequest().authenticated()
+
                 ).formLogin(
                         login ->
                                 login.loginPage("/auth/login")
@@ -59,4 +61,5 @@ public class SecurityConfig {
                 .setPasswordEncoder(new BCryptPasswordEncoder());
         return daoAuthenticationProvider;
     }
+
 }
