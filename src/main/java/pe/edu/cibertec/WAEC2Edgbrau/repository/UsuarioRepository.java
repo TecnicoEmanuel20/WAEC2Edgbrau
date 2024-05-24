@@ -11,17 +11,12 @@ import pe.edu.cibertec.WAEC2Edgbrau.model.bd.Usuario;
 @Repository
 public interface UsuarioRepository
         extends JpaRepository<Usuario, Integer> {
-    Usuario findByEmail(String email);
     Usuario findByNomusuario(String nomusuario);
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE usuario SET nombres=:nombres, apellidos=:apellidos " +
-            ", activo=:activo WHERE idusuario=:idusuario"
-            ,nativeQuery = true)
-    void updateUser(@Param("nombres") String nombres,
-                    @Param("apellidos") String apellidos,
-                    @Param("activo") Boolean activo,
-                    @Param("idusuario") Integer idusuario);
+    @Query(value = "UPDATE usuario SET password=:password WHERE nomusuario=:nomusuario", nativeQuery = true)
+    void updateUser(@Param("password") String password,
+                    @Param("nomusuario") String nomusuario);
 
 }

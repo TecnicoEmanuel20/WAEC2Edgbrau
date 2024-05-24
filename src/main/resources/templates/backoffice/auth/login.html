@@ -32,11 +32,14 @@
                 <label for="password">Password</label>
             </div>
             </div>
-            <div style="padding-left: 553px; padding-top: 30px" ><button type="button" class="btn btn-primary">REGISTRARSE</button>
-                <button type="submit" class="btn btn-primary">INGRESAR</button>
+            <div style="padding-left: 553px; padding-top: 30px" ><a th:href="@{/auth/registrar}" class="btn btn-primary">Registrar</a>
+                <button type="submit" class="btn btn-success">INGRESAR</button>
             </div>
 
         </form>
+        <div th:if="${param.error != null}">
+            <p style="text-align: center" class="alert alert-danger mt-3" >Usuario No Encontrado</p>
+        </div>
     </div>
 </div>
 </body>

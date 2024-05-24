@@ -6,9 +6,6 @@ import java.util.List;
 public interface IUsuarioService {
 
     Usuario obtenerUsuarioxNomUsuario(String nomusuario);
-    Usuario guardarUsuario(Usuario usuario);
-    List<Usuario> listarUsuarios();
-    Usuario obtenerUsuarioxId(Integer id);
-    void actualizarUsuario(Usuario usuario);
-
+    Usuario guardarUsuario (Usuario usuario, String nombreRol);
+    void actualizarUsuario(String password, String nomusuario);
 }
