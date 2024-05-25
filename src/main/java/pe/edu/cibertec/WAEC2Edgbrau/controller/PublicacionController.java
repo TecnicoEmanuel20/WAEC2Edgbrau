@@ -26,5 +26,39 @@ public class PublicacionController {
         return "backoffice/publicacion/frmpublicacion";
     }
 
+    @GetMapping(value = "/list")
+    @ResponseBody
+    public List<Publicacion> listadoPublicacion() {
+        return publicacionService.listadoPublicacion();
+    }
 
+    @PostMapping(value = "/registrar")
+    @ResponseBody
+    public RespuestaResponse guardarPublicacion(@RequestBody Publicacion publicacion) {
+        boolean rs = true;
+        String men = "Producto Registrado";
+        try{
+            if(publicacion.getIdpublicacion() > 0) {
+                publicacionService.guardarPublicacion(publicacion);
+            }else {
+                publicacionService.guardarPublicacion(publicacion);
+            }
+        }catch (Exception e) {
+            rs = false;
+            men = "Error en : " + e.getCause().getMessage();
+        }
+        return RespuestaResponse.builder().mensaje(men).resultado(rs).build();
+    }
+
+    @GetMapping(value = "/{idpublicacion}")
+    @ResponseBody
+    public Publicacion buscarPublicacion(@PathVariable Integer idpublicacion) {
+        return publicacionService.buscarPublicacion(idpublicacion);
+    }
+
+    @GetMapping(value = "/autor")
+    @ResponseBody
+    public List<Autor> listadoAutor() {
+        return autorService.listadoAutor();
+    }
 }
